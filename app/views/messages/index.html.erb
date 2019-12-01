@@ -1,0 +1,40 @@
+<h1>Index Page</h1>
+<h2><%= Time.now.utc %></h2>
+<%= form_for :message, url: messages_path do |f| %>
+  <p>
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+  </p>
+  <p>
+    <%= f.radio_button :delaydelete, 'true', :checked => true %>
+    <%= label :delaydelete, 'delete after 1 hour' %>
+    <%= f.radio_button :delaydelete, 'false' %>
+    <%= label :delaydelete, 'delete afret 1 view' %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">message</th>
+      <th scope="col">delaydelete</th>
+      <th scope="col">link</th>
+      <th scope="col">created at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Message.all.each do |m| %>
+      <tr>
+        <th scope="row"><%= m.id %></th>
+          <td><%= m.message %></td>
+          <td><%= m.delaydelete %></td>
+          <td><%= link_to message_path(m), message_path(m) %></td>
+          <td><%= m.created_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
