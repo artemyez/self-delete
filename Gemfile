@@ -6,6 +6,8 @@ gem "hashid-rails", "~> 1.0"
 gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-cron'
+gem 'attr_encrypted'
+gem 'rspec-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.1'
 # Use postgresql as the database for Active Record
