@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
   def show
-    #@message = Message.find(params[:id])
     @message = Message.find_by_hashid(params[:id])
     if @message.delaydelete == false
       destroy
@@ -13,11 +12,11 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    @message.save
-    redirect_to messages_path
-    #redirect_to @message
-    # render plain: params[:message].inspect
-    # render plain: message_params.inspect
+    if (@message.save)
+      render 'link_show'
+    else
+      render 'index'
+    end
   end
 
   private def message_params

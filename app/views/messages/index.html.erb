@@ -1,21 +1,21 @@
-<h1>Index Page</h1>
-<h2><%= Time.current %></h2>
-<%= form_for :message, url: messages_path do |f| %>
-  <p>
-    <%= f.label :message %><br>
-    <%= f.text_area :message %>
-  </p>
-  <p>
-    <%= f.radio_button :delaydelete, 'true', :checked => true %>
-    <%= label :delaydelete, 'delete after 1 hour' %>
-    <%= f.radio_button :delaydelete, 'false' %>
-    <%= label :delaydelete, 'delete afret 1 view' %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="col-sm-4">
+  <div class="form-group">
+    <%= form_for :message, url: messages_path do |f| %>
+      <%= f.label 'Enter your text' %><br>
+      <%= f.text_area :message, class: "form-control", rows: 3 %>
+      <div class="form-check">
+        <%= f.radio_button :delaydelete, 'true', :checked => true %>
+        <%= label :delaydelete, 'delete after 1 hour' %><br>
+        <%= f.radio_button :delaydelete, 'false' %>
+        <%= label :delaydelete, 'delete after 1 view' %>
+      </div>
+        <%= f.submit 'Submit', class: "btn btn-default btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
+
+<div class="col-sm-8">
 <table class="table table-hover">
   <thead>
     <tr>
@@ -38,3 +38,4 @@
   <% end %>
   </tbody>
 </table>
+</div>

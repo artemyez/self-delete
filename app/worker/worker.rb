@@ -6,7 +6,7 @@ class Worker
     #    message.destroy
     #  end
     Message.all.each do |message|
-      if message.delaydelete == true && Time.now >= message.created_at+300
+      if message.delaydelete == true && Time.now >= message.created_at+10
         message.destroy
         #puts "message deleted"
       end
